@@ -1,0 +1,220 @@
+/*app.globals.css*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Roboto', sans-serif; /* Apply the Roboto font */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Define a custom utility class for the Libre Barcode font */
+  @font-face {
+    font-family: 'Oswald';
+    src: url('/Oswald.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .font-Oswald {
+    font-family: 'Oswald', sans-serif;
+  }
+
+  /* Define a custom utility class for the nunito font */
+  @font-face {
+    font-family: 'nunito';
+    src: url('/NunitoSans-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .font-nunito {
+    font-family: 'nunito', sans-serif;
+  }
+}
+
+canvas#matrix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.relative > * {
+  position: relative;
+  z-index: 10;
+}
+
+
+@keyframes fadein {
+  from {
+    opacity: 0.01;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadein {
+  animation: fadein 7s ease-in;
+}
+.rounded-t-lg {
+  border-top-left-radius: 10rem; /* Adjust as needed */
+  border-top-right-radius: 10rem; /* Adjust as needed */
+}
+
+.hidden-initially {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.vision-image {
+  background: url('/Platform.png') no-repeat center center;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.9rem; /* Optional: adds rounded corners */
+}
+
+.animate-on-view {
+  animation: slideIn 2s forwards;
+}
+
+.box {
+  position: relative;
+  border: 1px solid #38a169; /* Adjusted to use the green-500 color */
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem; /* Adjust as needed */
+  overflow: hidden; /* Ensure pseudo-element stays within bounds */
+  transition: background-color 0.3s ease;
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/robot_front.png') no-repeat center center;
+  background-size: cover;
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0.5; /* Adjust opacity as needed */
+  z-index: 0; /* Ensure it stays behind other content */
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.box:hover::before {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0.7; /* Adjust hover opacity as needed */
+}
+
+.box > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.box2 {
+  position: relative;
+  border: 1px solid #38a169; /* Adjusted to use the green-500 color */
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem; /* Adjust as needed */
+  overflow: hidden; /* Ensure pseudo-element stays within bounds */
+  transition: background-color 0.3s ease;
+}
+
+.box2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+  bottom: 0;
+  background: url('/robot_left.png') no-repeat center center;
+  background-size: cover;
+  transform-origin: center;
+  z-index: 0; /* Ensure it stays behind other content */
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.flip-y::before {
+  transform: scaleX(-1);
+}
+
+.box2:hover::before {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 1; /* Adjust hover opacity as needed */
+}
+
+.box2 > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.text-transition {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.text-transition-active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.line-transition {
+  height: 2px;
+  background-color: white;
+  transition: width 1s ease;
+  margin-top: 20px;
+  width: 0;
+}
+
+.line-transition-active {
+  width: 100%;
+}
