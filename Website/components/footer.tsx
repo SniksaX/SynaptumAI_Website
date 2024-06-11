@@ -82,7 +82,10 @@ export default function Footer() {
             >
               <FaLinkedin className="h-5 w-5" /> {/* LinkedIn icon */}
             </Link>
-            <Link className="hover:text-gray-300" href="#">
+            <Link
+              className="hover:text-gray-300"
+              href="https://www.facebook.com/profile.php?id=61560492525115"
+            >
               <FaFacebook className="h-5 w-5" /> {/* Facebook icon */}
             </Link>
           </div>
