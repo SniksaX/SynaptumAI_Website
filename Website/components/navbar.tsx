@@ -6,7 +6,7 @@ import debounce from "lodash/debounce";
 import Image from "next/image";
 import synaptumAILogo from "@/public/SynaptumAILogo.png";
 import { useRouter } from "next/navigation";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"; // Importing from Heroicons v2
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export function Navbar() {
   const [isVisible, setIsVisible] = useState(true);

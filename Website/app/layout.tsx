@@ -2,6 +2,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import GoogleAnalytics from "@/utils/GoogleAnalytics";
+import { Navbar } from "@/components/navbar";
+import Footer from "@/components/footer";
+import dynamic from "next/dynamic";
+
+const CreateChatBotMain = dynamic(
+  () => import("@/components/ChatbotAI/CreateChatBotMain"),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: "SynaptumAI",
@@ -30,7 +38,11 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-        {children}
+        <div className="font-nunito">
+          <Navbar />
+        </div>
+        <div className="relative overflow-hidden min-h-screen ">{children}</div>
+        <CreateChatBotMain />
       </body>
     </html>
   );

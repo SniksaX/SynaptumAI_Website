@@ -1,5 +1,6 @@
 // components/HomePageSection1.tsx
 "use client";
+import { MessageIcon } from "@/utils/IconsSvg";
 import React from "react";
 import { FaLightbulb, FaDesktop, FaRobot } from "react-icons/fa";
 
